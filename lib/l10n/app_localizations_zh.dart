@@ -391,7 +391,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String rainInMinutes(int minutes) {
-    return '未来 $minutes 分钟内有雨';
+    String _temp0 = intl.Intl.pluralLogic(
+      minutes,
+      locale: localeName,
+      other: '$minutes 分钟',
+      one: '1 分钟',
+    );
+    return '$_temp0后下雨';
   }
 
   @override
@@ -399,12 +405,24 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String rainInHours(int hours) {
-    return '未来 $hours 小时内有雨';
+    String _temp0 = intl.Intl.pluralLogic(
+      hours,
+      locale: localeName,
+      other: '$hours 小时',
+      one: '小时',
+    );
+    return '未来 $_temp0内有雨';
   }
 
   @override
   String rainExpectedInMinutes(int minutes) {
-    return '预计 $minutes 分钟后有雨';
+    String _temp0 = intl.Intl.pluralLogic(
+      minutes,
+      locale: localeName,
+      other: '$minutes 分钟',
+      one: '1 分钟',
+    );
+    return '预计 $_temp0 分钟后有雨';
   }
 
   @override
@@ -412,7 +430,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String rainExpectedInHours(int hours) {
-    return '预计 $hours 小时后有雨';
+    String _temp0 = intl.Intl.pluralLogic(
+      hours,
+      locale: localeName,
+      other: '$hours 小时',
+      one: '1 小时',
+    );
+    return '预计 $_temp0 小时后有雨';
   }
 
   @override
