@@ -23,6 +23,7 @@ import 'dart:math';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../api_key.dart';
 import '../services/caching_service.dart';
 import '../services/weather_service.dart';
 import 'decode_OM.dart';
@@ -30,7 +31,6 @@ import 'decode_RV.dart';
 import 'weather_data.dart';
 
 const String _mfApiHost = 'webservice.meteofrance.com';
-const String _mfApiToken = '__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__';
 
 const Map<String, String> _mfWarningPhenomenons = {
   '1': 'Wind',
@@ -198,7 +198,7 @@ Future<List<dynamic>> mfMakeForecastRequest(
     'lat': lat.toString(),
     'lon': lon.toString(),
     'lang': 'fr',
-    'token': _mfApiToken,
+    'token': mfApiToken,
   };
   final url = Uri.https(_mfApiHost, 'forecast', params);
 
@@ -217,7 +217,7 @@ Future<dynamic> mfMakeObservationRequest(
     'lat': lat.toString(),
     'lon': lon.toString(),
     'lang': 'fr',
-    'token': _mfApiToken,
+    'token': mfApiToken,
   };
   final url = Uri.https(_mfApiHost, 'v2/observation', params);
 
@@ -237,7 +237,7 @@ Future<dynamic> mfMakeRainRequest(double lat, double lon, String place) async {
     'lat': lat.toString(),
     'lon': lon.toString(),
     'lang': 'fr',
-    'token': _mfApiToken,
+    'token': mfApiToken,
   };
   final url = Uri.https(_mfApiHost, 'rain', params);
 
@@ -257,7 +257,7 @@ Future<dynamic> mfGetLightForecastResponse(double lat, double lon) async {
     'lat': lat.toString(),
     'lon': lon.toString(),
     'lang': 'fr',
-    'token': _mfApiToken,
+    'token': mfApiToken,
   };
   final url = Uri.https(_mfApiHost, 'forecast', params);
   final response = await http.get(url);
@@ -706,7 +706,7 @@ Future<List<WeatherAlert>> mfGetWeatherAlerts(dynamic position) async {
   final dept = position['dept'].toString();
   final params = {
     'domain': dept,
-    'token': _mfApiToken,
+    'token': mfApiToken,
   };
 
   try {
@@ -719,7 +719,7 @@ Future<List<WeatherAlert>> mfGetWeatherAlerts(dynamic position) async {
 
     final dictionaryUrl = Uri.https(_mfApiHost, 'v3/warning/dictionary', {
       'lang': 'fr',
-      'token': _mfApiToken,
+      'token': mfApiToken,
     });
     final dictionaryFile = await XCustomCacheManager.fetchData(
       dictionaryUrl.toString(),

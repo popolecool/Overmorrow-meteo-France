@@ -39,7 +39,7 @@ import '../l10n/app_localizations.dart';
 String sanitizeErrorMessage(String e) {
   String newStr = e.toString().replaceAll(wapi_Key, "WAPIKEY");
   newStr = newStr.replaceAll(access_key, "UNSPLASHKEY");
-  newStr = newStr.replaceAll("__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__", "METEOFRANCETOKEN");
+  newStr = newStr.replaceAll(mfApiToken, "METEOFRANCETOKEN");
   return newStr;
 }
 

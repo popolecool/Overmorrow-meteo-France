@@ -22,8 +22,6 @@ import 'dart:convert';
 import '../api_key.dart';
 import 'caching_service.dart';
 
-const String _mfApiToken = '__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__';
-
 class LocationService {
   static Future<List<String>> getRecommendation(String query) async {
     query = _sanitizeQuery(query);
@@ -127,7 +125,7 @@ class LocationService {
   static Future<List<String>> _getMfRecommendation(String query) async {
     var params = {
       'q': query,
-      'token': _mfApiToken,
+      'token': mfApiToken,
     };
 
     var url = Uri.https('webservice.meteofrance.com', 'places', params);
